@@ -1,0 +1,18 @@
+<h1 class="display-2">{{ issue.name }}</h1>
+<dl class="row">
+  <dt class="col-sm-3">Id</dt>
+  <dd class="col-sm-9">{{ issue.id }}</dd>
+ 
+  <dt class="col-sm-3">Tárgy kód</dt>
+  <dd class="col-sm-9">{{ issue.code }}</dd> 
+  
+  <dt class="col-sm-3">Helyszín</dt>
+  <dd class="col-sm-9"> <a [routerLink]="['/buildings']"> {{ issue.buildingid }} </a>   </dd>
+  
+  <dt class="col-sm-3">Leírás</dt>
+  <dd class="col-sm-9">{{ issue.description }}</dd>
+  
+  <dt class="col-sm-3">Ajánlott félév</dt>
+  <dd class="col-sm-9">{{ issue.status }}</dd>
+</dl>
+<button mat-raised-button routerLink="/issues">Back</button>

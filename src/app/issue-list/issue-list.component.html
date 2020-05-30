@@ -1,0 +1,39 @@
+<button mat-raised-button color="primary" (click)="onNewClick()">Új tárgy</button>
+
+<div class="row">
+  <div class="col">
+    <h1 class="display-2">Tárgyak</h1>
+    <status-filter [status]="selectedStatus" (onChange)="onFilterChange($event)"></status-filter>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Tárgy név</th>
+          <th scope="col">Ajánlott félév</th>
+          <th scope="col">Kredit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let issue of filteredIssues" (click)="onSelectIssue(issue)" [class.table-info]="issue === selectedIssue" >
+          <th scope="row">{{ issue.id }}</th>
+          <a [routerLink]="['/issues', issue.id]">
+            {{ issue.name }}
+          </a>
+          <td>{{ issue.status }}</td>
+          <td>{{ issue.credit }}</td>
+          <td>
+            <button (click)="onDeleteClick(issue.id)">
+              Töröl
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col" *ngIf="selectedIssue">
+    <issue-form [issue]="selectedIssue" (submit)="onFormSubmit($event)"></issue-form>
+  </div>
+</div>
+

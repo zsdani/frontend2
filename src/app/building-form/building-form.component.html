@@ -1,0 +1,76 @@
+<form (submit)="onSubmit(buildingForm)"
+      #buildingForm="ngForm">
+
+
+ <div class="form-group">
+  <mat-form-field>
+    <input name="epulet"
+           [(ngModel)]="model.b_name"
+           matInput
+           type="text"
+           aria-describedby="locationHelp"
+           placeholder="Épület"
+            pattern="(Északi épület|Déli épület)"
+            required
+           #epulet="ngModel">
+    <mat-error *ngIf="epulet.invalid && (epulet.dirty || epulet.touched) && epulet.errors.required">
+    </mat-error>
+    <mat-error *ngIf="epulet.invalid && (epulet.dirty || epulet.touched) && epulet.errors.pattern">
+        Északi épület vagy Déli épület lehet.
+    </mat-error>
+  </mat-form-field>
+  </div>
+
+  
+
+
+  <div class="form-group">
+    <!-- <small id="locationHelp" class="form-text text-muted">Give the location of the issue (e.g. labor)</small> -->
+    <mat-form-field>
+      <input name="location"
+             [(ngModel)]="model.floors"
+             matInput
+             type="text"
+             aria-describedby="locationHelp"
+             placeholder="Szint"
+             pattern="\d+"
+             #szint="ngModel">
+      <mat-error *ngIf="szint.invalid && (szint.dirty || szint.touched) && szint.errors.required">
+      </mat-error>
+      <mat-error *ngIf="szint.invalid && (szint.dirty || szint.touched) && szint.errors.pattern">
+        Add meg a szintet számban!
+      </mat-error>
+
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <!-- <small id="locationHelp" class="form-text text-muted">Give the location of the issue (e.g. labor)</small> -->
+    <mat-form-field>
+      <input name="location"
+             [(ngModel)]="model.room"
+             matInput
+             type="text"
+             aria-describedby="locationHelp"
+             placeholder="Szoba szám"
+             pattern="\d+"
+             #place="ngModel">
+      <mat-error *ngIf="place.invalid && (place.dirty || place.touched) && place.errors.required">
+      </mat-error>
+      <mat-error *ngIf="place.invalid && (place.dirty || place.touched) && place.errors.pattern">
+        Adja meg a szoba számát!
+      </mat-error>
+
+    </mat-form-field>
+  </div>
+
+ 
+
+  <button [disabled]="!buildingForm.valid"
+          type="submit"
+          mat-raised-button
+          color="primary">Mentés</button>
+</form>
+
+
+

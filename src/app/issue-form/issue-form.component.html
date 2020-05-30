@@ -1,0 +1,99 @@
+<form (submit)="onSubmit(issueForm)"
+      #issueForm="ngForm">
+  <div class="form-group">
+    <mat-form-field>
+      <input name="title"
+             [(ngModel)]="model.name"
+             matInput
+             type="text"
+             aria-describedby="titleHelp"
+             placeholder="Adja meg a tárgy nevét!"
+             required
+             #title="ngModel">
+      <mat-error *ngIf="title.invalid && (title.dirty || title.touched) && title.errors.required">
+        Title is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+
+ <div class="form-group">
+  <mat-form-field>
+    <input name="status"
+           [(ngModel)]="model.status"
+           matInput
+           type="text"
+           aria-describedby="locationHelp"
+           placeholder="Ajánlott félév"
+            pattern="(Első félév|Második félév|Harmadik félév|Negyedik félév|Ötödik félév|Hatodik félév)"
+            required
+           #status="ngModel">
+    <mat-error *ngIf="status.invalid && (status.dirty || status.touched) && status.errors.required">
+    </mat-error>
+    <mat-error *ngIf="status.invalid && (status.dirty || status.touched) && status.errors.pattern">
+      Első/Második/stb kell kezdődnie és félévre kell végződnie
+    </mat-error>
+  </mat-form-field>
+  </div>
+
+  
+
+
+  <div class="form-group">
+    <!-- <small id="locationHelp" class="form-text text-muted">Give the location of the issue (e.g. labor)</small> -->
+    <mat-form-field>
+      <input name="location"
+             [(ngModel)]="model.buildingid"
+             matInput
+             type="text"
+             aria-describedby="locationHelp"
+             placeholder="Helyszin-id"
+             pattern="\d+"
+             #place="ngModel">
+      <mat-error *ngIf="place.invalid && (place.dirty || place.touched) && place.errors.required">
+      </mat-error>
+      <mat-error *ngIf="place.invalid && (place.dirty || place.touched) && place.errors.pattern">
+        Egy helyszín id-t adj meg!
+      </mat-error>
+
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <!-- <small id="locationHelp" class="form-text text-muted">Give the location of the issue (e.g. labor)</small> -->
+    <mat-form-field>
+      <input name="kredit"
+             [(ngModel)]="model.credit"
+             matInput
+             type="number"
+             aria-describedby="locationHelp"
+             placeholder="Kredit"
+             pattern="\d+"
+             required
+             #kredit="ngModel">
+      <mat-error *ngIf="kredit.invalid && (kredit.dirty || kredit.touched) && kredit.errors.required">
+      </mat-error>
+      <mat-error *ngIf="kredit.invalid && (kredit.dirty || kredit.touched) && kredit.errors.pattern">
+        Csak számot és csak pozitívat lehet megadni.
+      </mat-error>
+
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <!-- <small id="descriptionHelp" class="form-text text-muted">The error details</small> -->
+    <mat-form-field>
+
+      <textarea name="description"
+                [(ngModel)]="model.description"
+                matInput
+                aria-describedby="descriptionHelp"
+                placeholder="Leírás"></textarea>
+    </mat-form-field>
+  </div>
+
+  <button [disabled]="!issueForm.valid"
+          type="submit"
+          mat-raised-button
+          color="primary">Mentés</button>
+</form>

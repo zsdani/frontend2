@@ -1,0 +1,48 @@
+<div *ngIf="authService.isWhatRole()=='ADMIN'">
+  <button mat-raised-button color="primary" (click)="onNewClickb()">Új helyszín</button>
+  <br/>
+  <br/>
+</div> 
+<!--<div> {{ authService.isWhatRole() }} </div> -->
+
+
+<div class="row">
+    <div class="col">
+      <h1 class="display-2">Épületek</h1>
+      <!--<app-buildings-filter [b_name]="selectedB_name" (onChange)="onFilterChangeb($event)"></app-buildings-filter>-->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Épület neve:</th>
+            <th scope="col">Szint:</th>
+            <th scope="col">Szoba:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let building of buildings" (click)="onSelectBuildingb(building)" [class.table-info]="building === selectedBuilding" >
+          <!--<tr *ngFor="let building of buildings" >-->
+            <th scope="row">{{ building.id }}</th>
+            <td>{{ building.b_name }}</td>
+            <td>{{ building.floors }}</td>
+            <td>{{ building.room }}</td>
+            <td>
+              <div *ngIf="authService.isWhatRole()=='ADMIN'">
+              <button (click)="onDeleteClickb(building.id)">
+                Töröl
+              </button>
+            </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div *ngIf="authService.isWhatRole()=='ADMIN'">
+  <div class="row">
+    <div class="col" *ngIf="selectedBuilding">
+      <app-building-form [building]="selectedBuilding" (submit)="onFormSubmitb($event)"></app-building-form>
+    </div>
+  </div>
+  </div>

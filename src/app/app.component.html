@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+  <button mat-button href="/">
+    <mat-icon>account_balance</mat-icon>
+    Neptun
+  </button>
+
+  <span class="fill-remaining-space" fxHide="false" fxHide.gt-sm></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button mat-button href="/issues" routerLink="/issues">Tárgyak</button>
+    <button mat-button href="/user" routerLink="/user">Saját adatok</button>
+    <button mat-button href="/buildings" routerLink="/buildings">Épületek</button>
+    <!--<span>Hello, {{authService.user.username}}!</span>-->
+    <button mat-button (click)="logout()">Kilépés</button>
+  </div>
+  <button mat-icon-button [matMenuTriggerFor]="menu" fxHide="false" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+ <mat-menu xPosition="before" #menu="matMenu">
+  <div *ngIf="authService.isLoggedIn">
+    <button mat-menu-item routerLink="/issues">Tárgyak</button>
+    <button mat-menu-item routerLink="/user">Saját adatok</button>
+    <button mat-menu-item (click)="logout()">Kilépés</button>
+  </div>
+  <div *ngIf="!authService.isLoggedIn">
+    <button mat-button routerLink="/login">Kilépés</button>
+  </div>
+</mat-menu> 
+
+
+<glink searchField="Eötvös Loránd Tudományegyetem weboldala"></glink>
+
+<my-component></my-component>
+
+<router-outlet></router-outlet>
+
