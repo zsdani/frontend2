@@ -25,6 +25,7 @@ import { UsersService } from './users.service';
 import { BuildingsComponent } from './buildings/buildings.component';
 import { BuildingFormComponent } from './building-form/building-form.component';
 import { BuildingsFilterComponent } from './buildings-filter/buildings-filter.component';
+import { TargyakComponent } from './targyak/targyak.component';
 
 
 
@@ -41,7 +42,8 @@ import { BuildingsFilterComponent } from './buildings-filter/buildings-filter.co
     LoginFormComponent,
     BuildingsComponent,
     BuildingFormComponent,
-    BuildingsFilterComponent
+    BuildingsFilterComponent,
+    TargyakComponent
     
 
   ],

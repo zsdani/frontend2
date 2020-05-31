@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Users } from '../users';
 import { UsersService } from '../users.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -10,11 +11,29 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
-  private users: Users[] = [];
+  public users: Users[] = [];
+  public selectedUsers: Users;
+
   constructor(
-    private issueService: UsersService
+    private usersService: UsersService,
+    public authService: AuthService
   ) { 
     
+    
+  }
+
+  public async ngOnInit(): Promise<void> {
+    //this.selectedUsers = '';
+    this.users = await this.usersService.getUserss();
+
+  }
+  public onSelectUsers(users: Users): void {
+    this.selectedUsers = users;
+  }
+
+  public async onDeleteClick(id: number): Promise<void> {
+    await this.usersService.deleteUsers(id);
+    this.users = await this.usersService.getUserss();
   }
     
   ;

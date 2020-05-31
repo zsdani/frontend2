@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Issue } from '../issue';
 import { IssueService } from '../issue.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'issue-list',
@@ -10,11 +11,13 @@ import { IssueService } from '../issue.service';
 export class IssueListComponent implements OnInit {
   private issues: Issue[] = [];
   public filteredIssues: Issue[];
+  public hozzaadIssues: Issue[];
   public selectedStatus: string;
   public selectedIssue: Issue;
 
   constructor(
-    private issueService: IssueService
+    private issueService: IssueService,
+    public authService: AuthService
   ) {
     //issueService.getIssues().subscribe((data)=>this.issues=data);
   }
@@ -54,6 +57,12 @@ export class IssueListComponent implements OnInit {
     await this.issueService.deleteIssue(id);
     this.issues = await this.issueService.getIssues();
     this.filter();
+  }
+
+  public async onHozzaAdClick(id: number): Promise<void> {
+    await this.issueService.getIssue(id);
+    //this.issues = await this.issueService.getIssues();
+    //this.filter();
   }
 
   private filter(): void {

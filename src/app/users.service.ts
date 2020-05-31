@@ -1,38 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Users } from "./users";
+import { HttpClient } from '@angular/common/http';
+import { httpOptions } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  user: Users[] = [
-  {
-    id: 1,
-    username: 'hkiuw0',
-    name: 'Dani',
-    password: 'fejlesztes',
-    role: 'STUDENT',
-    sum_credit: 35,
-    e_mail: 'valmi@eamil.com',
-  },
-  {
-    id: 1,
-    username: 'neb5x8',
-    name: 'Dani',
-    password: 'fejlesztes',
-    role: 'STUDENT',
-    sum_credit: 35,
-    e_mail: 'valmi@eadasdasmil.com',
-  }
-]
+  private issueUr3 = 'http://localhost:8080/users';
 
-  constructor() { }
 
-  getUsers() {
-    return this.user;
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  public getUserss(): Promise<Users[]> {
+    return this.http.get<Users[]>(`${this.issueUr3}`, httpOptions).toPromise();
   }
-  
-  getUser(id) {
-    return this.user.find(i => i.id == id);
+
+  public getUsers(id: number): Promise<Users> {
+    return this.http.get<Users>(`${this.issueUr3}/${id}`, httpOptions).toPromise();
   }
+
+  public deleteUsers(id: number): Promise<Users> {
+    return this.http.delete<Users>(`${this.issueUr3}/${id}`, httpOptions).toPromise();
+  }
+
+
 }

@@ -1,4 +1,6 @@
+<div *ngIf="authService.isWhatRole()=='ADMIN'">
 <button mat-raised-button color="primary" (click)="onNewClick()">Új tárgy</button>
+</div>
 
 <div class="row">
   <div class="col">
@@ -22,18 +24,27 @@
           <td>{{ issue.status }}</td>
           <td>{{ issue.credit }}</td>
           <td>
+            <div *ngIf="authService.isWhatRole()=='ADMIN'">
             <button (click)="onDeleteClick(issue.id)">
               Töröl
             </button>
+          </div>
+          <div *ngIf="authService.isWhatRole()=='STUDENT'">
+            <button (click)="onHozzaAdClick(issue.id)">
+              Hozzá ad
+            </button>
+          </div>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+<div *ngIf="authService.isWhatRole()=='ADMIN'">
 <div class="row">
   <div class="col" *ngIf="selectedIssue">
     <issue-form [issue]="selectedIssue" (submit)="onFormSubmit($event)"></issue-form>
   </div>
+</div>
 </div>
 

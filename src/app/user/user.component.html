@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col">
+      <h1 class="display-2">Felhasználók</h1>
+      <!--<app-buildings-filter [b_name]="selectedB_name" (onChange)="onFilterChangeb($event)"></app-buildings-filter>-->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Név:</th>
+            <th scope="col">Szerepe:</th>
+            <th scope="col">E-mail:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let users of users" >
+          <!--<tr *ngFor="let building of buildings" >-->
+            <th scope="row">{{ users.id }}</th>
+            <td>{{ users.name }}</td>
+            <td>{{ users.role }}</td>
+            <td>{{ users.e_mail }}</td>
+            <td>
+                    <button (click)="onDeleteClick(users.id)">
+                      Töröl
+                    </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
