@@ -1,8 +1,21 @@
 # frontend2
 
+<h3>Szekvencia diagram</h3>
+
+
 ![image](https://user-images.githubusercontent.com/61462292/83352222-5956f580-a34a-11ea-91f6-d6f979b2c953.png)
 
 
+
+<h3>Fejlesztői környezet</h3>
+
+Használt technológiák: JAVA Spring, hibernate, Maven, H2 Database, Lombok, Spring Security, Angular 8.3.5, Bootstrap
+
+ <ul>
+   <li> Backend: IntelliJ IDEA </li>
+   <li> Frontend: Visual Studio Code </li>
+</ul>
+    
 <h3>Könyvtárstruktúra:</h3>
 Backend
 
@@ -12,6 +25,7 @@ Frontend
 
 ![image](https://user-images.githubusercontent.com/61462292/83350940-08da9a80-a340-11ea-908e-0c52f5881d8c.png)
 ![image](https://user-images.githubusercontent.com/61462292/83350954-2d367700-a340-11ea-865a-0b7c6dac472e.png)
+
 
 <h3>Kliensoldali szolgáltatások:</h3>
 <ul>
@@ -49,5 +63,40 @@ Folyamat:
    
    ![image](https://user-images.githubusercontent.com/61462292/83351065-307e3280-a341-11ea-9b6f-87cf4c00d831.png)
    
+   <li><b>Főoldal:</b> 
+      <ol>
+         <li>Tanulóként megjelenik a felvehető tárgyak a listája. A lista elemek a jobb oldali 'Hozzá ad' gombbal lehetne hozzá adni a             tárgyainkhoz.</li>
+         
+   ![image](https://user-images.githubusercontent.com/61462292/83352400-5e687480-a34b-11ea-8654-7aadd89dddfc.png)
    
+         
+   <li>Tanárként megjelenik bal felül egy "Új tárgy" gomb, illetve a "Hozzá ad" helyett "Törlés" gomb jelenik meg. Törlés gomb működik és tanárként ki lehet törölni tárgyakat. Az új tárgy gomb megnyomásával, let megjelenik egy form amit ha helyesen tölt ki a tanár, akkor képes menteni és a listában meg is jelenik az új tárgy. Módosítani is lehet a tárgyat, ezt pedig tárgy mellé kattintásval lehet elérni, ilyenkor is lent megjelenik a form és a megfelelő mezők be it töltődnke.  </li>
+ 
+ ![image](https://user-images.githubusercontent.com/61462292/83352641-41cd3c00-a34d-11ea-99fd-fb7a1cf05cfe.png)
+</ol>
+   
+   
+   
+ <li>A tárgy nevére való kattintással a felhasználót elnavigálja a weboldal egy új oldalra, ahol megtekintheti részletesen a tárgy jellemzőit</li>
+ 
+![image](https://user-images.githubusercontent.com/61462292/83352745-126aff00-a34e-11ea-82b4-b7e829f413ee.png)
+
+<li>Ha a felhasználó rákattint a helyszín id-re, akkor az oldal elnavigálja az épületek listájához</li>
+
+![image](https://user-images.githubusercontent.com/61462292/83353018-e9e40480-a34f-11ea-8551-b2fd3146920c.png)
+
+<li>A menüben a Felhasználók kezelés-re kattintva <b>tanárként</b> megjelennek a felhasználók és adataik. Törölni is képes a tanár a felhasználókat. <b>Tanulóként</b> erre a manüpontra való kattintással nem történik semmi, mivel ehez a tanulónak nincs joga.</li>
+
+![image](https://user-images.githubusercontent.com/61462292/83352893-15b2ba80-a34f-11ea-954b-86d1536460fa.png)
+
+<li>Épületeknél <b>tanárként</b> úgyan úgy mint a tantárgyaknál tud módosítani/ törölni és újat létrehozni. <b>Diákként</b> csak megtekinteni lehet.</li>
+
+![image](https://user-images.githubusercontent.com/61462292/83352956-7e9a3280-a34f-11ea-80df-90c0e3b0ca2f.png)
+
+<li>Kilpés-re kattintással a bejelentkező oldalra navigál a weboldal</li>
+
+![image](https://user-images.githubusercontent.com/61462292/83353057-26176500-a350-11ea-97e2-275dc9aa8d21.png)
+
+
+ 
 </ul>
